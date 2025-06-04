@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn C</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Heading of the blog -->
+        <header class="header">
+            <h1>C Programming</h1>
+            <p>Learn the fundamentals and advanced concepts of C programming</p>
+        </header>
+
+        <div class="content-div">
+            <p class="para-content">In this blog, we'll cover the following:
+                <ul>
+                    <li><a href="#preprocessor">Preprocessor Directives</a></li>
+                    <li><a href="#tokens">Tokens in C</a></li>
+                    <li><a href="#formattedIO">Formatted I/O Functions</a></li>
+                    <li><a href="#unformattedIO">Unformatted I/O Functions</a></li>
+                    <li><a href="#controlflow">Control Flow</a></li>
+                    <li><a href="#arrays">Arrays</a></li>
+                    <li><a href="#arrayoperations">Array Operations</a></li>
+                    <li><a href="#transpose">Transpose</a></li>
+                    <li><a href="#patterns">Pattern Printing</a></li>
+                    <li><a href="#stringhandling">String Handling Functions</a></li>
+                </ul>
+            </p>
+
+            <!-- Content Sections here as it was in the previous code -->
+           <div id="preprocessor">
+                <p class="headings">1. Types of Pre-processor Directives</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+#define MAX 100  // Macro definition
+#include "myheader.h"  // File inclusion (assuming a header file exists)
+#ifdef DEBUG
+    #define DEBUG_PRINT printf("Debug mode is ON\n");
+#else
+    #define DEBUG_PRINT // Empty macro if DEBUG is not defined
+#endif
+#pragma pack(1)  // Other directive: structure packing
+
+int main() {
+    DEBUG_PRINT;
+    printf("Max value: %d\n", MAX);
+    return 0;
+}
+                </pre>
+                <img src="image/PreprocessorDirectories.png" alt="Preprocessor Directives Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/PreProcessorDirec.PNG" alt="Preprocessor Output Screenshot" class="image-content">
+            </div>
+
+            <div id="tokens">
+                <p class="headings">2. Tokens in C</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int num = 10;  // Keywords: int; Identifier: num; Constant: 10
+    char str[] = "Hello";  // String
+    int a = 5 + 3;  // Operators: =, +; Special symbol: ;
+    printf("Number: %d, String: %s\n", num, str);
+    return 0;
+}
+                </pre>
+                <img src="image/tokens.png" alt="Tokens Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Tokens.PNG" alt="Tokens Output Screenshot" class="image-content">
+            </div>
+
+            <div id="formattedIO">
+                <p class="headings">3. Formatted I/O Functions</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("You entered: %d\n", num);
+    return 0;
+}
+                </pre>
+                <img src="image/formattedio.png" alt="Formatted I/O Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Formattedi-o.PNG" alt="Formatted I/O Output Screenshot" class="image-content">
+            </div>
+
+            <div id="unformattedIO">
+                <p class="headings">4. Unformatted I/O Functions</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    char ch, str[50];
+    printf("Enter a character: ");
+    ch = getchar();
+    putchar(ch);
+    printf("\nEnter a string: ");
+    fgets(str, 50, stdin);  // Using fgets instead of gets for safety
+    puts(str);
+    return 0;
+}
+                </pre>
+                <img src="image/putsgets.png" alt="Unformatted I/O Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/getputschar.PNG" alt="Unformatted I/O Output Screenshot" class="image-content">
+            </div>
+
+            <div id="controlflow">
+                <p class="headings">5. Control Flow</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int choice = 2;
+    switch (choice) {
+        case 1:
+            printf("Choice 1 selected\n");
+            break;
+        case 2:
+            printf("Choice 2 selected, jumping to label\n");
+            goto mylabel;
+        default:
+            printf("Invalid choice\n");
+    }
+mylabel:
+    printf("This is the goto label\n");
+    return 0;
+}
+                </pre>
+                <img src="image/switchcasegoto.png" alt="Control Flow Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Switch and goto.PNG" alt="Control Flow Output Screenshot" class="image-content">
+            </div>
+
+            <div id="arrays">
+                <p class="headings">6. Arrays</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int arr1D[5] = {1, 2, 3, 4, 5};  // 1D array
+    int arr2D[2][3] = {{1, 2, 3}, {4, 5, 6}};  // 2D array
+    printf("1D Array: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr1D[i]);
+    }
+    printf("\n2D Array:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            printf("%d ", arr2D[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+                </pre>
+                <img src="image/arrayandtypes.png" alt="Arrays Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Arraytypes.PNG" alt="Arrays Output Screenshot" class="image-content">
+            </div>
+
+            <div id="arrayoperations">
+                <p class="headings">7. Array Operations</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int arr1[3] = {1, 2, 3}, arr2[3] = {4, 5, 6};
+    int result[3];
+    for (int i = 0; i < 3; i++) {
+        result[i] = arr1[i] + arr2[i];  // Addition
+        printf("Sum[%d]: %d\n", i, result[i]);
+    }
+    return 0;
+}
+                </pre>
+                <img src="image/operationsArray.png" alt="Array Operations Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/OperationsArray.PNG" alt="Array Operations Output Screenshot" class="image-content">
+            </div>
+
+            <div id="transpose">
+                <p class="headings">8. Transpose of an Array</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int matrix[2][2] = {{1, 2}, {3, 4}};
+    int transpose[2][2];
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            transpose[j][i] = matrix[i][j];  // Transpose
+        }
+    }
+    printf("Transpose Matrix:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+                </pre>
+                <img src="image/2Dtranspose.png" alt="Transpose Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Transpose.PNG" alt="Transpose Output Screenshot" class="image-content">
+            </div>
+
+            <div id="patterns">
+                <p class="headings">9. Patterns</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+int main() {
+    int n = 4;
+    printf("Right Pyramid:\n");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("* ");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+                </pre>
+                <img src="image/pattern.png" alt="Patterns Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/Patterns.PNG" alt="Patterns Output Screenshot" class="image-content">
+            </div>
+
+            <div id="stringhandling">
+                <p class="headings">10. String Handling Functions</p>
+                <p class="example">Example:</p>
+                <pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char str1[20] = "Hello";
+    char str2[20] = "World";
+    printf("Length of str1: %zu\n", strlen(str1));
+    strcat(str1, str2);
+    printf("Concatenated: %s\n", str1);
+    printf("Comparison: %d\n", strcmp(str1, str2));
+    return 0;
+}
+                </pre>
+                <img src="image/stringhandling.png" alt="String Handling Screenshot" class="image-content">
+                <p class="example">Output:</p>
+                <img src="output-img/StringHandling.PNG" alt="String Handling Output Screenshot" class="image-content">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
